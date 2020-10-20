@@ -1,0 +1,12 @@
+"Test Suite","Test Case","Test Step","Step Type","Step Status","Result message","Execution Date"
+"TestSuite withValidData","TestCase withChainingForAllOperations","Add","request","UNKNOWN","","20-Sep-2020 04_35",
+"TestSuite withValidData","TestCase withChainingForAllOperations","PropertyDivideNum2","properties","OK","","20-Sep-2020 04_35",
+"TestSuite withValidData","TestCase withChainingForAllOperations","Property Transfer FromAddResponseToDivideNum1","transfer","OK","Message:Performed transfer [DivideNum1]
+","20-Sep-2020 04_35",
+"TestSuite withValidData","TestCase withChainingForAllOperations","Divide","request","UNKNOWN","","20-Sep-2020 04_35",
+"TestSuite withValidData","TestCase withChainingForAllOperations","PropertiesMultiplyInputChaining","properties","OK","","20-Sep-2020 04_35",
+"TestSuite withValidData","TestCase withChainingForAllOperations","Groovy Script ToGetSetProperty","groovy","OK","","20-Sep-2020 04_35",
+"TestSuite withValidData","TestCase withChainingForAllOperations","Multiply","request","UNKNOWN","","20-Sep-2020 04_35",
+"TestSuite withValidData","TestCase withChainingForAllOperations","XMLParsing using Groovy Script","groovy","OK","Message:Script-result: com.eviware.soapui.impl.wsdl.teststeps.WsdlTestRequestStepResult@c1e0c8d
+","20-Sep-2020 04_35",
+"TestSuite withValidData","TestCase withChainingForAllOperations","Subtract","request","UNKNOWN","","20-Sep-2020 04_35",

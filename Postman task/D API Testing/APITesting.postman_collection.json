@@ -1,0 +1,891 @@
+{
+	"info": {
+		"_postman_id": "de91e3ec-9cd2-47a1-b8de-8be374d75987",
+		"name": "API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PositiveTestCase",
+			"item": [
+				{
+					"name": "Get detials for an existing single employee with valid ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b9260ad6-c19b-4abc-af2c-75618ac34ce0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test Name, Salary and Age fields value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"     pm.expect(jsonData.data.id).to.eql(pm.environment.get(\"existingEmployeeID\"))\r",
+									"    pm.expect(jsonData.data.employee_name).to.eql(pm.environment.get(\"existingEmployeeName\"));\r",
+									"    pm.expect(jsonData.data.employee_salary).to.eql(pm.environment.get(\"existingEmployeeSalary\"));\r",
+									"    pm.expect(jsonData.data.employee_age).to.eql(pm.environment.get(\"existingEmployeeAge\"));\r",
+									"   ;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify user can get detials for an existing single employee with valid ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Jason Schema Validation - Get detials for an existing single employee with valid ID Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "70a16916-d9a7-42da-bf1c-fb847e04d813",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test Name, Salary and Age fields value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"     pm.expect(jsonData.data.id).to.eql(pm.environment.get(\"existingEmployeeID\"))\r",
+									"    pm.expect(jsonData.data.employee_name).to.eql(pm.environment.get(\"existingEmployeeName\"));\r",
+									"    pm.expect(jsonData.data.employee_salary).to.eql(pm.environment.get(\"existingEmployeeSalary\"));\r",
+									"    pm.expect(jsonData.data.employee_age).to.eql(pm.environment.get(\"existingEmployeeAge\"));\r",
+									"   ;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify user can get detials for an existing single employee with valid ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Get the details for all employees",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eebfcb2b-f23c-495a-af16-c8a489feb6b2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\r",
+									"pm.variables.get(\"existingEmployeeName\"),\r",
+									"pm.variables.get(\"existingEmployeeAge\"),\r",
+									"pm.variables.get(\"existingEmployeeSalary\"),\r",
+									"pm.variables.get(\"existingEmployeeID\"));\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employees",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees"
+							]
+						},
+						"description": "Verify if user is able to get the details for all employees."
+					},
+					"response": []
+				},
+				{
+					"name": "Create an employee with valid data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19218ff7-ba42-4e14-be30-a0bec48b4217",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Test Name, Salary and Age fields value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.name).to.eql(pm.environment.get(\"employeeName\"));\r",
+									"    pm.expect(jsonData.data.salary).to.eql(pm.environment.get(\"employeeSalary\"));\r",
+									"    pm.expect(jsonData.data.age).to.eql(pm.environment.get(\"employeeAge\"));\r",
+									"    pm.environment.set(\"existingEmployeeID\", jsonData.data.id);\r",
+									"    pm.environment.set(\"existingEmployeeName\", jsonData.data.name);\r",
+									"     pm.environment.set(\"existingEmployeeSalary\", jsonData.data.salary);\r",
+									"      pm.environment.set(\"existingEmployeeAge\", jsonData.data.age);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{employeeName}}\",\r\n    \"salary\": \"{{employeeSalary}}\",\r\n    \"age\": \"{{employeeAge}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"create"
+							]
+						},
+						"description": "We are creating an employee with valid data in fields name, salary and age."
+					},
+					"response": []
+				},
+				{
+					"name": " create an employee with non-json request body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a7bc611a-4413-4bb3-bdba-df7834240502",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root>\r\n   <age>{{employeeAge}}</age>\r\n   <name>{{employeeName}}</name>\r\n   <salary>{{employeeSalary}}</salary>\r\n</root>",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"create"
+							]
+						},
+						"description": "Check if an user is able to create and employee with non-json request body"
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing employee with valid data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d1acd1f-fb28-4892-9d1e-36fa2643e4ca",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Test Name, Salary and Age fields value\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.employee_name).to.eql(pm.environment.get(\"updatedEmployeeName\"));\r",
+									"    pm.expect(jsonData.data.employee_salary).to.eql(pm.environment.get(\"updatedEmployeeSalary\"));\r",
+									"    pm.expect(jsonData.data.employee_age).to.eql(pm.environment.get(\"updatedEmployeeAge\"));\r",
+									"    pm.expect(jsonData.data.id).to.eql(pm.environment.get(\"existingEmployeeID\"));\r",
+									"    pm.environment.set(\"existingEmployeeName\", jsonData.data.employee_name);\r",
+									"     pm.environment.set(\"existingEmployeeSalary\",jsonData.data.employee_salary);\r",
+									"      pm.environment.set(\"existingEmployeeAge\", jsonData.data.employee_age);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\t\t{\"name\":\"{{updatedEmployeeName}}\",\"salary\":\"{{updatedEmployeeSalary}}\",\"age\":\"{{updatedEmployeeAge}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/update/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"update",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify if user is able to update an existing employee with valid name, salary and age."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an existing employee with valid ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "700130a5-dc6a-4e0c-9c0a-4918e9cc9e56",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"successfully! deleted\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/delete/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"delete",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify user can delete an existing employee with valid ID."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "NegativeTestCase",
+			"item": [
+				{
+					"name": "Get the details for all the employees with data in body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2130cbbb-e8c1-4d7d-b291-8eabf49388ac",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{existingEmployeeName}}\",\r\n    \"salary\": \"{{existingEmployeeSalary}}\",\r\n    \"age\": \"{{existingEmployeeAge}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employees",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees"
+							]
+						},
+						"description": "Verify if user is not allowed to get the details for all the employees with data in body."
+					},
+					"response": []
+				},
+				{
+					"name": "Get detials for an existing single employee with data in body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f9ab4c5-63c2-40b0-a8ca-d8c47bbbe32c",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{existingEmployeeName}}\",\r\n    \"salary\": \"{{existingEmployeeSalary}}\",\r\n    \"age\": \"{{existingEmployeeAge}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify user is not allowed to get detials for an existing single employee with data in body."
+					},
+					"response": []
+				},
+				{
+					"name": "create duplicate employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "713996cc-4931-4af7-b56a-4691ddac2dd3",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{existingEmployeeName}}\",\r\n    \"salary\": \"{{existingEmployeeSalary}}\",\r\n    \"age\": \"{{existingEmployeeAge}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"create"
+							]
+						},
+						"description": "Check if an user is not allowed to create duplicate employee"
+					},
+					"response": []
+				},
+				{
+					"name": "Create an employee with invalid data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "417ec604-97dd-4868-bfaa-f0b014a533c9",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{invalidEmployeeName}}\",\r\n    \"salary\": \"{{invalidSalary}}\",\r\n    \"age\": \"{{invalidAge}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"create"
+							]
+						},
+						"description": "Check if a user is not allowed to create an employee with invalid name, salary and age."
+					},
+					"response": []
+				},
+				{
+					"name": "create employee with empty request body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9297401c-498e-47c6-bd40-bd0123674b12",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"create"
+							]
+						},
+						"description": "Check if an user is able to create an employee with empty request body"
+					},
+					"response": []
+				},
+				{
+					"name": "Update employee with empty request body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d28dcb5d-f16f-42fe-8ebe-322797c46127",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/update/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"update",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify if user is able to update employee with empty request body."
+					},
+					"response": []
+				},
+				{
+					"name": "Update an existing employee with invalid data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46bb1b77-2ed5-49ff-9fc6-fbd309940dcf",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{invalidEmployeeName}}\",\r\n    \"salary\": \"{{invalidSalary}}\",\r\n    \"age\": \"{{invalidAge}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/update/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"update",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify if user is not allowed to update an existing employee with invalid name,salary and age."
+					},
+					"response": []
+				},
+				{
+					"name": "Update employee with non-json request body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e390310-c586-4d57-b52d-860145d2da85",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<root>\r\n   <age>{{existingEmployeeAge}}</age>\r\n   <name>{{existingEmployeeName}}</name>\r\n   <salary>{{existingEmployeeSalary}}</salary>\r\n</root>",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/update/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"update",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify if user is able to update employee with non-json request body."
+					},
+					"response": []
+				},
+				{
+					"name": "Update a non-existing employee with valid data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3ee20758-7dd4-4ece-9c3d-dc87bfda63f6",
+								"exec": [
+									"\r",
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\t\t{\"name\":\"{{updatedEmployeeName}}\",\"salary\":\"{{updatedEmployeeSalary}}\",\"age\":\"{{updatedEmployeeAge}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/update/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"update",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify if user is not allowed to update a non-existing employee with valid name, salary and age.\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get the details for non-existing single employee with valid ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5736c40e-14f9-4cf2-8421-49dfb3b59ed5",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/employee/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employee",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify if user is not allowed to get the details for non-existing single employee with valid ID."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete non-existing  employee with valid ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "361c4d28-886b-4433-a035-a4a9085a5c82",
+								"exec": [
+									"pm.test(\"Bad Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([400,401]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should contain failed text\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"failed\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/delete/{{existingEmployeeID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"delete",
+								"{{existingEmployeeID}}"
+							]
+						},
+						"description": "Verify user is not allowed to delete non-existing  employee with valid ID."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
