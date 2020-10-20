@@ -1,6 +1,6 @@
 1)For D API
 
-# API_Projects
+
 I have used Postman for this task. 
 Different assertions are applied.
 Corresponding Collections are created for Parameterization.
@@ -13,7 +13,7 @@ newman run APITesting.postman_collection.json -e ProductionEnv.postman_environme
 
 
 2) For Swagger API
-# API_Projects
+
 Postman is used. 
 Different assertions are applied 
 Corresponding Collections are created for Parameterization.
@@ -26,7 +26,7 @@ newman run APITesting.postman_collection.json -e Swagger-Test.postman_environmen
 
 
 3) For Soap UI Projects
-# SoapUIProjects
+
 Added the Concept of Groovy Script, 
 Property Transfer, end to end testing, 
 Generating CSV Report 
